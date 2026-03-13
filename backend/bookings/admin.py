@@ -6,23 +6,23 @@ from .models import (
 
 @admin.register(Temple)
 class TempleAdmin(admin.ModelAdmin):
-    list_display = ('name', 'location', 'contact_number')
-    search_fields = ('name', 'location')
+    list_display = ('name', 'city', 'contact_phone')
+    search_fields = ('name', 'city')
 
 @admin.register(Devotee)
 class DevoteeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'phone_number')
-    search_fields = ('name', 'email', 'phone_number')
+    list_display = ('name', 'email', 'phone')
+    search_fields = ('name', 'email', 'phone')
 
 @admin.register(DarshanSlot)
 class DarshanSlotAdmin(admin.ModelAdmin):
-    list_display = ('temple', 'date', 'start_time', 'end_time', 'capacity', 'booked_count')
+    list_display = ('temple', 'date', 'start_time', 'end_time', 'max_capacity', 'booked_count')
     list_filter = ('temple', 'date')
 
 @admin.register(DarshanBooking)
 class DarshanBookingAdmin(admin.ModelAdmin):
-    list_display = ('devotee', 'slot', 'booking_date', 'status')
-    list_filter = ('status', 'booking_date')
+    list_display = ('devotee', 'slot', 'created_at', 'status')
+    list_filter = ('status', 'created_at')
 
 @admin.register(Pooja)
 class PoojaAdmin(admin.ModelAdmin):
@@ -31,13 +31,13 @@ class PoojaAdmin(admin.ModelAdmin):
 
 @admin.register(PoojaBooking)
 class PoojaBookingAdmin(admin.ModelAdmin):
-    list_display = ('devotee', 'pooja', 'booking_date', 'status')
-    list_filter = ('status', 'booking_date')
+    list_display = ('devotee', 'pooja', 'created_at', 'status')
+    list_filter = ('status', 'created_at')
 
 @admin.register(Donation)
 class DonationAdmin(admin.ModelAdmin):
-    list_display = ('devotee', 'amount', 'donation_date', 'purpose')
-    list_filter = ('donation_date', 'purpose')
+    list_display = ('devotee', 'amount', 'created_at', 'purpose')
+    list_filter = ('created_at', 'purpose')
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
@@ -46,5 +46,5 @@ class EventAdmin(admin.ModelAdmin):
 
 @admin.register(Volunteer)
 class VolunteerAdmin(admin.ModelAdmin):
-    list_display = ('devotee', 'temple', 'role', 'status')
-    list_filter = ('temple', 'status')
+    list_display = ('devotee', 'event', 'status')
+    list_filter = ('status',)

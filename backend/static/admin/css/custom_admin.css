@@ -1,0 +1,75 @@
+/* Custom Admin Enhancements - Temple Platform */
+
+:root {
+    --accent-gold: #fbbf24;
+    --accent-gold-hover: #d97706;
+    --bg-dark: #121212;
+    --bg-card: rgba(30, 30, 35, 0.8);
+}
+
+.main-header {
+    background-color: var(--bg-dark) !important;
+    border-bottom: 1px solid rgba(251, 191, 36, 0.2) !important;
+}
+
+.brand-link {
+    border-bottom: 1px solid rgba(251, 191, 36, 0.2) !important;
+}
+
+.brand-link .brand-text {
+    color: var(--accent-gold) !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px;
+}
+
+.sidebar {
+    background-color: var(--bg-dark) !important;
+}
+
+.nav-sidebar .nav-link.active {
+    background-color: var(--accent-gold) !important;
+    color: #000 !important;
+}
+
+.card {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(251, 191, 36, 0.1) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(251, 191, 36, 0.1) !important;
+}
+
+.btn-primary, .btn-outline-primary {
+    border-color: var(--accent-gold) !important;
+    color: var(--accent-gold) !important;
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background-color: var(--accent-gold) !important;
+    color: #000 !important;
+}
+
+/* Custom Login Styles */
+.login-box .card {
+    border: 1px solid var(--accent-gold) !important;
+}
+
+.login-logo a {
+    color: var(--accent-gold) !important;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Data Table Adjustments */
+.table thead th {
+    border-bottom: 2px solid var(--accent-gold) !important;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--accent-gold) !important;
+    border-color: var(--accent-gold) !important;
+}

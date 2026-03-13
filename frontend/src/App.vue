@@ -1,6 +1,6 @@
 <template>
-  <div class="layout-container">
-    <aside class="sidebar">
+  <div class="layout-container" :class="{ 'auth-layout': isAuthPage }">
+    <aside v-if="!isAuthPage" class="sidebar">
       <div class="logo">
         <h2 style="color: var(--accent-gold);">TemplePlatform</h2>
       </div>
@@ -100,10 +100,15 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 import { 
   LayoutDashboard, MapPin, Calendar, Utensils, 
   Heart, Users, Plus 
 } from 'lucide-vue-next'
+
+const route = useRoute();
+const isAuthPage = computed(() => route.path === '/login');
 </script>
 
 <style scoped>

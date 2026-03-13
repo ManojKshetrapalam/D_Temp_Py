@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,78 @@ INSTALLED_APPS = [
     'corsheaders',
     'bookings',
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Temple Platform Admin",
+    "site_header": "Temple Platform",
+    "site_brand": "TemplePlatform",
+    "site_logo": None,
+    "welcome_sign": "Welcome to Temple Management System",
+    "copyright": "Durgadevi Temple Management Systems",
+    "search_model": ["bookings.Temple", "bookings.Devotee"],
+    "user_avatar": None,
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"model": "bookings.DarshanBooking"},
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": ["bookings", "auth"],
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "bookings.Temple": "fas fa-gopuram",
+        "bookings.Devotee": "fas fa-user-friends",
+        "bookings.DarshanSlot": "fas fa-calendar-alt",
+        "bookings.DarshanBooking": "fas fa-ticket-alt",
+        "bookings.Pooja": "fas fa-pray",
+        "bookings.PoojaBooking": "fas fa-clipboard-list",
+        "bookings.Donation": "fas fa-hand-holding-heart",
+        "bookings.Event": "fas fa-bullhorn",
+        "bookings.Volunteer": "fas fa-hands-helping",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+    "related_modal_active": True,
+    "custom_css": "admin/css/custom_admin.css",
+    "use_google_fonts_cdn": True,
+    "show_ui_builder": False,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-dark",
+    "accent": "accent-primary",
+    "navbar": "navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": True,
+    "layout_fixed": True,
+    "footer_fixed": False,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "darkly",
+    "dark_mode_theme": "darkly",
+    "button_classes": {
+        "primary": "btn-outline-primary",
+        "secondary": "btn-outline-secondary",
+        "info": "btn-outline-info",
+        "warning": "btn-outline-warning",
+        "danger": "btn-outline-danger",
+        "success": "btn-outline-success"
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,3 +194,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
