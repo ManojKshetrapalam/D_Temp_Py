@@ -9,6 +9,33 @@ from .serializers import (
     DonationSerializer, EventSerializer, VolunteerSerializer
 )
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.db.models import Sum
+
+class DashboardStatsView(APIView):
+    def get(self, request):
+        total_bookings = DarshanBooking.objects.count() + PoojaBooking.objects.count()
+        active_temples = Temple.objects.count()
+        total_donations = Donation.objects.aggregate(Sum('amount'))['amount__sum'] or 0
+        
+        recent_bookings = DarshanBooking.objects.select_related('devotee', 'slot__temple').order_by('-created_at')[:5]
+        bookings_data = []
+        for b in recent_bookings:
+            bookings_data.append({
+                "devotee": b.devotee.name,
+                "temple": b.slot.temple.name,
+                "date_time": f"{b.slot.date} {b.slot.start_time}",
+                "status": b.status
+            })
+
+        return Response({
+            "total_bookings": f"{total_bookings:,}",
+            "active_temples": active_temples,
+            "total_donations": f"₹{total_donations:,.0f}",
+            "recent_bookings": bookings_data
+        })
+
 class TempleViewSet(viewsets.ModelViewSet):
     queryset = Temple.objects.all()
     serializer_class = TempleSerializer
